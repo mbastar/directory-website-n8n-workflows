@@ -1,0 +1,873 @@
+{
+  "name": "Get Logos for Companies",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "ee450ed6-743d-4e29-891d-be622ec07325",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -100,
+        920
+      ],
+      "id": "d0c05f23-3d18-4eac-931d-b0265aee5cc1",
+      "name": "Webhook",
+      "webhookId": "ee450ed6-743d-4e29-891d-be622ec07325"
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "base": {
+          "__rl": true,
+          "value": "appgNVUT3t2i6rfsN",
+          "mode": "list",
+          "cachedResultName": "NoCodeWorkflows Webflow Sync",
+          "cachedResultUrl": "https://airtable.com/appgNVUT3t2i6rfsN"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblEnaAbIchO9Dshd",
+          "mode": "list",
+          "cachedResultName": "Companies",
+          "cachedResultUrl": "https://airtable.com/appgNVUT3t2i6rfsN/tblEnaAbIchO9Dshd"
+        },
+        "id": "={{ $json.query.recordId }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        120,
+        920
+      ],
+      "id": "49574036-359d-409b-8e9f-9e534f7a5776",
+      "name": "Airtable",
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "gllagswPitdUCdlf",
+          "name": "Airtable account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appgNVUT3t2i6rfsN",
+          "mode": "list",
+          "cachedResultName": "NoCodeWorkflows Webflow Sync",
+          "cachedResultUrl": "https://airtable.com/appgNVUT3t2i6rfsN"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblEnaAbIchO9Dshd",
+          "mode": "list",
+          "cachedResultName": "Companies",
+          "cachedResultUrl": "https://airtable.com/appgNVUT3t2i6rfsN/tblEnaAbIchO9Dshd"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Webhook').item.json.query.recordId }}",
+            "Logo Automation Status": "In Progress"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Link (slug)",
+              "displayName": "Link (slug)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Products",
+              "displayName": "Products",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Same as Company? (from Products)",
+              "displayName": "Same as Company? (from Products)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Website",
+              "displayName": "Website",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Domain Query",
+              "displayName": "Domain Query",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Format Website",
+              "displayName": "Format Website",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Thumbnail",
+              "displayName": "Thumbnail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Banner Card",
+              "displayName": "Banner Card",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Featured Illustration",
+              "displayName": "Featured Illustration",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Short Description",
+              "displayName": "Short Description",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Long Description",
+              "displayName": "Long Description",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Address",
+              "displayName": "Address",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Twitter",
+              "displayName": "Twitter",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Facebook",
+              "displayName": "Facebook",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Instagram",
+              "displayName": "Instagram",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "YouTube",
+              "displayName": "YouTube",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "LinkedIn",
+              "displayName": "LinkedIn",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "About",
+              "displayName": "About",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Logo Automation Status",
+              "displayName": "Logo Automation Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Not Running",
+                  "value": "Not Running"
+                },
+                {
+                  "name": "Run",
+                  "value": "Run"
+                },
+                {
+                  "name": "In Progress",
+                  "value": "In Progress"
+                },
+                {
+                  "name": "Completed",
+                  "value": "Completed"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        340,
+        920
+      ],
+      "id": "630cf98c-26de-482b-b846-3b9d65ea247f",
+      "name": "Airtable1",
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "gllagswPitdUCdlf",
+          "name": "Airtable account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "airtableOAuth2Api",
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appgNVUT3t2i6rfsN",
+          "mode": "list",
+          "cachedResultName": "NoCodeWorkflows Webflow Sync",
+          "cachedResultUrl": "https://airtable.com/appgNVUT3t2i6rfsN"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblEnaAbIchO9Dshd",
+          "mode": "list",
+          "cachedResultName": "Companies",
+          "cachedResultUrl": "https://airtable.com/appgNVUT3t2i6rfsN/tblEnaAbIchO9Dshd"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Airtable').item.json.id }}",
+            "LinkedIn": "={{ $('Code').item.json.LinkedIn }}",
+            "Twitter": "={{ $('Code').item.json.Twitter }}",
+            "Logo Automation Status": "Completed",
+            "Long Description": "={{ $('Code').item.json['Long Description'] }}",
+            "Short Description": "={{ $('Code').item.json['Short Description'] }}",
+            "Address": "={{ $('BrandFetch API').item.json.company.location.city }}, {{ $('BrandFetch API').item.json.company.location.country }}",
+            "Thumbnail": "={{ $json.Thumbnail }}",
+            "Banner Card": "={{ $json['Banner Card'] }}",
+            "Year Founded": "={{ $('Code').item.json['Year Founded'] }}",
+            "Num Employees": "={{ $('Code').item.json['Num Employees'] }}",
+            "Featured Illustration": "={{ $json['Featured Illustration'] }}",
+            "Facebook": "={{ $('Code').item.json.Facebook }}",
+            "Instagram": "={{ $('Code').item.json.Instagram }}",
+            "YouTube": "={{ $('Code').item.json.YouTube }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Link (slug)",
+              "displayName": "Link (slug)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Products",
+              "displayName": "Products",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Same as Company? (from Products)",
+              "displayName": "Same as Company? (from Products)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Website",
+              "displayName": "Website",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Domain Query",
+              "displayName": "Domain Query",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Format Website",
+              "displayName": "Format Website",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Thumbnail",
+              "displayName": "Thumbnail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Banner Card",
+              "displayName": "Banner Card",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Featured Illustration",
+              "displayName": "Featured Illustration",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Short Description",
+              "displayName": "Short Description",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Long Description",
+              "displayName": "Long Description",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Address",
+              "displayName": "Address",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Twitter",
+              "displayName": "Twitter",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Facebook",
+              "displayName": "Facebook",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Instagram",
+              "displayName": "Instagram",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "YouTube",
+              "displayName": "YouTube",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "LinkedIn",
+              "displayName": "LinkedIn",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "About",
+              "displayName": "About",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Logo Automation Status",
+              "displayName": "Logo Automation Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Not Running",
+                  "value": "Not Running"
+                },
+                {
+                  "name": "Run",
+                  "value": "Run"
+                },
+                {
+                  "name": "In Progress",
+                  "value": "In Progress"
+                },
+                {
+                  "name": "Completed",
+                  "value": "Completed"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Company Research & About",
+              "displayName": "Company Research & About",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Not Started",
+                  "value": "Not Started"
+                },
+                {
+                  "name": "Run",
+                  "value": "Run"
+                },
+                {
+                  "name": "Run in Progress",
+                  "value": "Run in Progress"
+                },
+                {
+                  "name": "Completed",
+                  "value": "Completed"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Year Founded",
+              "displayName": "Year Founded",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Num Employees",
+              "displayName": "Num Employees",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Updated",
+              "displayName": "Updated",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Webflow Item Id",
+              "displayName": "Webflow Item Id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Webflow Collection ID",
+              "displayName": "Webflow Collection ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Research Report",
+              "displayName": "Research Report",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Random Update",
+              "displayName": "Random Update",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1000,
+        920
+      ],
+      "id": "81628f95-ae4e-4b23-ba73-d1db5b55eaf7",
+      "name": "Airtable2",
+      "credentials": {
+        "airtableOAuth2Api": {
+          "id": "gllagswPitdUCdlf",
+          "name": "Airtable account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Complete implementation for processing Brandfetch API responses\n// to Airtable Companies table with optimized image selection\n\nfunction processBrandfetchToAirtable($input) {\n  const items = $input.all();\n  const results = [];\n\n  for (const item of items) {\n    try {\n      // Extract the API response\n      // API responses can be a single object or an array with one object\n      let apiData = item.json;\n      \n      // Handle array responses\n      if (Array.isArray(apiData)) {\n        apiData = apiData[0]; // Take the first item if it's an array\n      }\n      \n      // Get optimized image selections\n      const imageUrls = findBestImages(apiData);\n      \n      // Map the data to Airtable fields\n      const mappedData = {\n        // Company basic info\n        Name: apiData.name || '',\n        \"Link (slug)\": generateSlug(apiData.name),\n        Website: `https://${apiData.domain}` || '',\n        \"Domain Query\": `https://${apiData.domain}` || '',\n        \"Short Description\": apiData.description || '',\n        \"Long Description\": apiData.longDescription || '',\n        \n        // Company metadata\n        \"Year Founded\": apiData.company?.foundedYear || null,\n        \"Num Employees\": apiData.company?.employees || null,\n        \n        // Create an address from location data if available\n        Address: formatAddress(apiData.company?.location),\n        \n        // Social links\n        Twitter: findSocialLink(apiData.links, 'twitter'),\n        Facebook: findSocialLink(apiData.links, 'facebook'),\n        Instagram: findSocialLink(apiData.links, 'instagram'),\n        YouTube: findSocialLink(apiData.links, 'youtube'),\n        LinkedIn: findSocialLink(apiData.links, 'linkedin'),\n        \n        // Images - using optimized image selection\n        Thumbnail: imageUrls.Thumbnail ? [{ url: imageUrls.Thumbnail }] : [],\n        \"Banner Card\": imageUrls[\"Banner Card\"] ? [{ url: imageUrls[\"Banner Card\"] }] : [],\n        \"Featured Illustration\": imageUrls[\"Featured Illustration\"] ? [{ url: imageUrls[\"Featured Illustration\"] }] : [],\n      };\n      \n      results.push({ json: mappedData });\n      \n    } catch (error) {\n      console.error(`Error processing item: ${error.message}`);\n      // Return the original item with an error flag\n      results.push({ \n        json: { \n          ...item.json, \n          _processingError: error.message \n        } \n      });\n    }\n  }\n  \n  return results;\n}\n\n/**\n * Finds the best images based on specific priority rules:\n * - Thumbnail: Symbol > Icon > Logo (prioritize dark theme, SVG format)\n * - Banner Card: Banner image\n * - Featured Illustration: Non-banner images > Logo (avoid duplicates)\n */\nfunction findBestImages(apiData) {\n  // Initialize the result object\n  const result = {\n    Thumbnail: '',\n    \"Banner Card\": '',\n    \"Featured Illustration\": ''\n  };\n  \n  // Track used URLs to avoid duplication\n  const usedUrls = new Set();\n  \n  // Helper to get best format from an image object\n  const getBestFormat = (image) => {\n    if (!image || !image.formats || !Array.isArray(image.formats) || image.formats.length === 0) {\n      return null;\n    }\n    \n    // Prefer SVG format\n    const svgFormat = image.formats.find(f => f.format === 'svg');\n    if (svgFormat) return svgFormat;\n    \n    // Fall back to any format\n    return image.formats[0];\n  };\n  \n  // Helper to mark a URL as used and add it to the result\n  const useImage = (field, url) => {\n    if (url && !usedUrls.has(url)) {\n      result[field] = url;\n      usedUrls.add(url);\n      return true;\n    }\n    return false;\n  };\n  \n  // Helper to find best image of a specific type with theme preference\n  const findBestImageOfType = (images, type) => {\n    if (!images || !Array.isArray(images)) return null;\n    \n    const typeImages = images.filter(img => img.type === type);\n    if (typeImages.length === 0) return null;\n    \n    // Prioritize dark theme\n    const darkImages = typeImages.filter(img => img.theme === 'dark');\n    const selectedImages = darkImages.length > 0 ? darkImages : typeImages;\n    \n    const format = getBestFormat(selectedImages[0]);\n    return format ? format.src : null;\n  };\n  \n  // 1. For Thumbnail: First priority is symbol\n  const symbolUrl = findBestImageOfType(apiData.logos, 'symbol');\n  if (symbolUrl) {\n    useImage('Thumbnail', symbolUrl);\n  } else {\n    // If no symbol, try icon then logo\n    const iconUrl = findBestImageOfType(apiData.logos, 'icon');\n    const logoUrl = findBestImageOfType(apiData.logos, 'logo');\n    \n    if (iconUrl) {\n      useImage('Thumbnail', iconUrl);\n    } else if (logoUrl) {\n      useImage('Thumbnail', logoUrl);\n    }\n  }\n  \n  // 2. For Banner Card: Use banner from images\n  const banners = apiData.images?.filter(img => img.type === 'banner') || [];\n  if (banners.length > 0) {\n    const format = getBestFormat(banners[0]);\n    if (format) {\n      useImage('Banner Card', format.src);\n    }\n  }\n  \n  // 3. For Featured Illustration:\n  // First try to find any other image from images array that's not a banner\n  const nonBannerImages = apiData.images?.filter(img => img.type !== 'banner') || [];\n  if (nonBannerImages.length > 0) {\n    const format = getBestFormat(nonBannerImages[0]);\n    if (format && useImage('Featured Illustration', format.src)) {\n      return result;\n    }\n  }\n  \n  // Otherwise, use logo type from logos array if not already used\n  const logoUrl = findBestImageOfType(apiData.logos, 'logo');\n  if (logoUrl && !usedUrls.has(logoUrl)) {\n    useImage('Featured Illustration', logoUrl);\n  } else {\n    // If still nothing, use any unused logo type\n    const logoTypes = ['symbol', 'icon', 'other'];\n    for (const type of logoTypes) {\n      const url = findBestImageOfType(apiData.logos, type);\n      if (url && !usedUrls.has(url)) {\n        useImage('Featured Illustration', url);\n        break;\n      }\n    }\n  }\n  \n  return result;\n}\n\n// Helper function to format address from location data\nfunction formatAddress(location) {\n  if (!location) return '';\n  \n  const parts = [];\n  if (location.city) parts.push(location.city);\n  if (location.state) parts.push(location.state);\n  if (location.country) parts.push(location.country);\n  \n  return parts.join(', ');\n}\n\n// Helper function to find social media links\nfunction findSocialLink(links, platform) {\n  if (!links || !Array.isArray(links)) return '';\n  \n  const link = links.find(l => l.name && l.name.toLowerCase() === platform.toLowerCase());\n  return link ? link.url : '';\n}\n\n// Helper function to generate a slug from company name\nfunction generateSlug(name) {\n  if (!name) return '';\n  \n  return name\n    .toLowerCase()                  // Convert to lowercase\n    .replace(/[^\\w\\s-]/g, '')       // Remove special characters\n    .replace(/\\s+/g, '-')           // Replace spaces with hyphens\n    .replace(/--+/g, '-')           // Replace multiple hyphens with single hyphen\n    .replace(/^-+|-+$/g, '');       // Remove leading/trailing hyphens\n}\n\n// Process the input and return the results\nreturn processBrandfetchToAirtable($input);"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        780,
+        920
+      ],
+      "id": "4e300f70-2c28-4633-9760-8d5aacb087b7",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.brandfetch.io/v2/brands/{{ $('Airtable').item.json['Domain Query'] }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        560,
+        920
+      ],
+      "id": "fe07c632-74ab-4c22-906c-71849ec63df4",
+      "name": "BrandFetch API",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Ut2WhaC7KdPmwWxh",
+          "name": "BrandFetch"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable": {
+      "main": [
+        [
+          {
+            "node": "Airtable1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable1": {
+      "main": [
+        [
+          {
+            "node": "BrandFetch API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Airtable2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "BrandFetch API": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "0fc3e516-321f-4713-8508-c36908ae7002",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "f532144927bc5d9019aa85f86b6cf5c92da2b982ec87b10ea31e131b99c9841c"
+  },
+  "id": "16SpWh4ES5fG1rVq",
+  "tags": []
+}
